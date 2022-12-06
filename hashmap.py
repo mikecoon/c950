@@ -1,13 +1,14 @@
 '''
 Title: Hash Map
-Author: Thomas Adel
+Author: Joe James
 Date: 4/17/19
 Availability: https://github.com/joeyajames/Python/blob/master/HashMap.py
+Comments: Taken from the class resources
 '''
 
 class HashMap:
         def __init__(self):
-                self.size = 64
+                self.size = 40
                 self.map = [None] * self.size
 		
         def _get_hash(self, key):
@@ -16,7 +17,7 @@ class HashMap:
                         hash += ord(char)
                 return hash % self.size
 		
-        def add(self, key, value):
+        def insert(self, key, value):
                 key_hash = self._get_hash(key)
                 key_value = [key, value]
 		
@@ -56,9 +57,4 @@ class HashMap:
                         if self.map[i]:
                                 arr.append(self.map[i][0])
                 return arr
-			
-        def print(self):
-                print('---PHONEBOOK----')
-                for item in self.map:
-                        if item is not None:
-                                print(str(item))
+
