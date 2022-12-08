@@ -3,12 +3,9 @@ from distances import *
 from greedy import *
 from utils import *
 
-t1 = []
-for i in truck_1:
-    t1.append(i.ID)
-print(t1)
-t1o = []
-x = optimized_route(truck_1,0,[])
-for i in x:
-    t1o.append(i.ID)
-print(t1o)
+
+x, y ,z = optimized_route(truck_1,0,[], [0]),optimized_route(truck_2,0,[], [0]), optimized_route(truck_3,0,[], [0])
+
+print(get_total_distance(x[0],x[1]))
+print(get_total_distance(y[0],y[1]))
+print(get_total_distance(z[0],z[1]))

@@ -10,16 +10,15 @@ with open('csv_files/address.csv') as csv_address:
     address_csv = list(address_csv)
 
     #Compute the total distance
-    def get_distance(col_val, row_val, sum_val):
+    def get_distance(row_val, col_val, sum_val):
         d = distance_csv[row_val][col_val]
         if d == '':
             d = distance_csv[col_val][row_val]
-        sum_val += d
-        #print(sum_val)
+        sum_val += float(d)
         return float(sum_val)
     
     #Compute the current distance
-    def get_current_distance(col_val, row_val):
+    def get_current_distance(row_val, col_val):
         d = distance_csv[row_val][col_val]
         if d ==  '':
             d = distance_csv[col_val][row_val]

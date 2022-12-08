@@ -9,7 +9,7 @@ with open('csv_files/package.csv') as f:
     packageData = csv.reader(f, delimiter=',')
     next(packageData)
 
-    hashmap = HashMap()
+    hm = HashMap()
     truck_1 = []
     truck_2 = []
     truck_3= []
@@ -32,31 +32,31 @@ with open('csv_files/package.csv') as f:
 
         #Package with wrong address put in truck 3 to allow time for address change
         if 'Wrong' in notes:
-            p.start = '11:00:00'
+            p.start = ['11:00:00']
             truck_3.append(p)
 
         #First trucks packages
         if deadline != 'EOD':
             if 'Must' in notes or len(notes) == 0:
-                p.start = '8:00:00'
+                p.start = ['8:00:00']
                 truck_1.append(p)
         
         #Second trucks packages
         if 'Delayed' in notes or 'Can only' in notes:
-            p.start = '9:10:00'
+            p.start = ['9:10:00']
             truck_2.append(p)
         
         #Evenly distibute remaining packages across trucks 2 and 3
         if p not in truck_1 and p not in truck_2 and p not in truck_3:
             if len(truck_2) < len(truck_3):
-                p.start = '9:10:00'
+                p.start = ['9:10:00']
                 truck_2.append(p)
             else:
-                p.start = '11:00:00'
+                p.start = ['11:00:00']
                 truck_3.append(p)
 
         #store package in a hashmap
-        hashmap.insert(id, p)
+        hm.insert(id, p)
     
     #Set package starting locations
     set_location(truck_1)
