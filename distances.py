@@ -24,8 +24,19 @@ with open('csv_file/address.csv') as csv_address:
             d = distance_csv[col_val][row_val]
         return float(d)
 
+    #Return the packages assigned adresses
     def get_address():
         return address_csv
     
-    def get_time_left(distance, Truck):
-        pass
+    def get_time_left(distance, truck):
+        distance = '{0:02.0f}:{1:02.0f}'.format(*divmod((distance/18)*60,60)) + ':00'
+        truck.append(distance)
+        remainder = datetime.timedelta()
+        for time in truck:
+            (h,m,s)=time.split(':')
+            remainder += datetime.timedelta(hours=int(h), minutes=int(m), seconds=int(s))
+        return remainder
+
+
+
+
