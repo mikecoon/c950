@@ -1,6 +1,8 @@
 import csv
-from package import Package
+from Package import Package
 from hashmap import HashMap
+from utils import set_location
+from greedy import *
 
 #Read in package data
 with open('csv_files/package.csv') as f:
@@ -30,38 +32,38 @@ with open('csv_files/package.csv') as f:
 
         #Package with wrong address put in truck 3 to allow time for address change
         if 'Wrong' in notes:
-            truck_3.append(p.ID)
+            p.start = '11:00:00'
+            truck_3.append(p)
 
         #First trucks packages
         if deadline != 'EOD':
             if 'Must' in notes or len(notes) == 0:
-                truck_1.append(p.ID)
+                p.start = '8:00:00'
+                truck_1.append(p)
         
         #Second trucks packages
         if 'Delayed' in notes or 'Can only' in notes:
-            truck_2.append(p.ID)
+            p.start = '9:10:00'
+            truck_2.append(p)
         
         #Evenly distibute remaining packages across trucks 2 and 3
         if p not in truck_1 and p not in truck_2 and p not in truck_3:
             if len(truck_2) < len(truck_3):
-                truck_2.append(p.ID)
+                p.start = '9:10:00'
+                truck_2.append(p)
             else:
-                truck_3.append(p.ID)
+                p.start = '11:00:00'
+                truck_3.append(p)
 
         #store package in a hashmap
         hashmap.insert(id, p)
-#truck class
-#time it leaves hub, time (deliv time)
-#as you deliver, can take them off the truck
-
-    def get_truck_1():
-        return truck_1
-
-    def get_truck_2():
-        return truck_2
     
-    def get_truck_3():
-        return truck_3
-    
-    def get_hashmap():
-        return hashmap
+    #Set package starting locations
+    set_location(truck_1)
+    set_location(truck_2)
+    set_location(truck_3)
+
+    '''#Sort packages in optimal order
+    optimized_route(truck_1, 1, 0)
+    optimized_route(truck_2, 1, 0)
+    optimized_route(truck_3, 1, 0)'''
