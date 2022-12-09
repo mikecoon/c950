@@ -31,7 +31,7 @@ class ChainingHashTable:
 
         # update key if it is already in the bucket
         for kv in bucket_list:
-          #print (key_value)
+          print (key_value)
           if kv[0] == key:
             kv[1] = item
             return True
