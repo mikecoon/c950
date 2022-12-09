@@ -1,6 +1,5 @@
 from distances import *
 
-
 #O(n^2) runtime
 def optimized_route(truck, current_location, sorted_truck, sorted_truck_idx):
     
@@ -15,7 +14,6 @@ def optimized_route(truck, current_location, sorted_truck, sorted_truck_idx):
             next_location = d
     for package in truck:
         d = int(package.location)
-        
         if get_current_distance(current_location, d) == shortest_distance:
                     sorted_truck.append(package)
                     sorted_truck_idx.append(d)
