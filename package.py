@@ -13,5 +13,4 @@ class Package:
         self.status = status
     
     def __str__(self):  # overwite print(Package) otherwise it will print object reference 
-        return "%s, %s, %s, %s, %s, %s, %s" % (self.ID, self.address, self.city, self.state, self.zip, self.deadline, self.notes)
-    
+        return f'ID: {self.ID}\n Address: {self.address},{self.city},{self.state},{self.zip}\n Delivery Time: {self.deadline}\n Weight: {self.weight}\n Start: {self.start}\n Status: {self.status}'

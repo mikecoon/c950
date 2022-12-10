@@ -1,6 +1,5 @@
 import csv
 from Package import Package
-from hashmap import HashMap
 from hashtable import ChainingHashTable
 from greedy import *
 import distances
@@ -15,13 +14,13 @@ def set_location(truck):
 #Compute the total distance travelled by a truck
 def compute_truck_distance(truck_list, idx_list):
     total_distance=0
+
     for idx in range(len(idx_list)): 
         try:
             total_distance = distances.get_distance(int(idx_list[idx]), int(idx_list[idx+1]), total_distance)
             delivery_status = distances.get_time_left(distances.get_current_distance(int(idx_list[idx]), int(idx_list[idx+1])), truck_list[idx].start)
             truck_list[idx].status = str(delivery_status)
-            #Updates the package in the hashmap with the new status time
-            hm.insert(truck_list[idx].ID, truck_list)
+            hm.insert(truck_list[idx].ID, truck_list[idx])
         except IndexError:
             pass
 
@@ -39,7 +38,7 @@ with open('csv_files/package.csv') as f:
     truck_3= []
 
     for package in packageData:
-        id = int(package[0])
+        id = int(package[0]) 
         address = package[1]
         city = package[2]
         state = package[3]
@@ -81,6 +80,8 @@ with open('csv_files/package.csv') as f:
 
         #store package in a hashmap
         hm.insert(p.ID, p)
+        
+        #print(p.ID, hm.search(p.ID))
     
     #Set package starting locations
     set_location(truck_1)
@@ -100,4 +101,6 @@ with open('csv_files/package.csv') as f:
     #Return total distance travelled by all trucks
     def get_total_distance():
         return truck_1_dist + truck_2_dist + truck_3_dist
+    
+
     

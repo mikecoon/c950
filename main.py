@@ -1,5 +1,5 @@
 from load_trucks import *
-import datetime
+from options import *
 
 def main():
     print("Welcome to WGUPS!!")
@@ -14,21 +14,12 @@ def main():
                 case 1:
                     print(f'Total distance traveled is {get_total_distance():.2f} miles.\n')
                 case 2:
-                        try:
-                            time = input('Enter time in (HH:MM:SS) format: ')
-                            (h, m, s) = time.split(':')
-                            time = datetime.timedelta(hours=int(h), minutes=int(m), seconds=int(s))
-
-                            for i in range(1, 41):
-                                try:
-                                    ftime = hm.search(i)
-                                    print(i,ftime)
-                                except:
-                                    pass
-                        except:
-                            print('Invalid input, try again.')
+                    time = input('Enter time in (HH:MM:SS) format: ')
+                    get_all_packages(hm, time)
                 case 3:
-                        pass
+                    id = int(input('Enter package ID: '))
+                    time = input('Enter time in (HH:MM:SS) format: ')
+                    get_single_package(hm, id,time)
                 case 4:
                     print('Have a good day.')
                     break
@@ -36,8 +27,5 @@ def main():
         except:
             print('Invalid input, try again.')
                 
-
-
-
 if __name__ == "__main__":
     main()
