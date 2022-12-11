@@ -10,6 +10,7 @@ with open('csv_files/address.csv') as csv_address:
     address_csv = list(address_csv)
 
     #Compute the total distance
+    #O(1)
     def get_distance(row_val, col_val, sum_val):
         d = distance_csv[row_val][col_val]
         if d == '':
@@ -18,6 +19,7 @@ with open('csv_files/address.csv') as csv_address:
         return float(sum_val)
     
     #Compute the current distance
+    #O(1)
     def get_current_distance(row_val, col_val):
         d = distance_csv[row_val][col_val]
         if d ==  '':
@@ -26,9 +28,12 @@ with open('csv_files/address.csv') as csv_address:
         return float(d)
 
     #Return the packages assigned adresses
+    #O(n)
     def get_address():
         return address_csv
     
+    #Compute the total distance a sinlge truck has left
+    #O(n)
     def get_time_left(distance, truck):
         distance = '{0:02.0f}:{1:02.0f}'.format(*divmod((distance/18)*60,60)) + ':00'
         truck.append(distance)

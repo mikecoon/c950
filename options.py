@@ -1,4 +1,7 @@
 import datetime
+
+#Return information for all of the packages that match a given time
+#O(n)
 def get_all_packages(hm, time):
     try:
         (h, m, s) = time.split(':')
@@ -37,6 +40,8 @@ def get_all_packages(hm, time):
     except:
         print('Invalid input, try again.')
 
+#Return a single package that matches a given id and time
+#O(1)
 def get_single_package(hm, id, time):
     try:
         start = hm.search(id).start

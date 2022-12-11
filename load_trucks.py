@@ -5,6 +5,7 @@ from greedy import *
 import distances
 
 #To set location of packages on truck
+#O(n^2)
 def set_location(truck):
     for package in truck:
         for address in distances.get_address():
@@ -12,6 +13,7 @@ def set_location(truck):
                 package.location = address[0]
 
 #Compute the total distance travelled by a truck
+#O(n)
 def compute_truck_distance(truck_list, idx_list):
     total_distance=0
 
@@ -37,6 +39,8 @@ with open('csv_files/package.csv') as f:
     truck_2 = []
     truck_3= []
 
+    #Iterate through each package
+    #O(n)
     for package in packageData:
         id = int(package[0]) 
         address = package[1]
@@ -99,6 +103,7 @@ with open('csv_files/package.csv') as f:
     truck_3_dist = compute_truck_distance(truck_3_sorted[0], truck_3_sorted[1])
 
     #Return total distance travelled by all trucks
+    #O(1)
     def get_total_distance():
         return truck_1_dist + truck_2_dist + truck_3_dist
     

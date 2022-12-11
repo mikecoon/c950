@@ -1,5 +1,6 @@
 from distances import *
 
+#Greedy algorithm to determine the optimal ordering of a trucks package's
 #O(n^2) runtime
 def optimized_route(truck, current_location, sorted_truck, sorted_truck_idx):
     
