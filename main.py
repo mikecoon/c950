@@ -1,3 +1,7 @@
+'''
+Name: Michael Coon
+ID: 010791917
+'''
 from load_trucks import *
 from options import *
 
@@ -19,10 +23,12 @@ def main():
                 case 2:
                     time = input('Enter time in (HH:MM:SS) format: ')
                     get_all_packages(hm, time)
+                    break
                 case 3:
                     id = int(input('Enter package ID: '))
                     time = input('Enter time in (HH:MM:SS) format: ')
                     get_single_package(hm, id,time)
+                    break
                 case 4:
                     print('Have a good day.')
                     break

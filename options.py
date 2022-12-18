@@ -21,20 +21,17 @@ def get_all_packages(hm, time):
             if start >= time:
                 hm.search(i).status = 'At Hub'
                 hm.search(i).start = 'Departing at ' + str(start)
-                print('Package ID: ' + str(hm.search(i).ID))
-                print('Status of Delivery: ' + str(hm.search(i).status))
+                print(hm.search(i).__str__()) 
 
             elif start <= time:
                 if status > time:
                     hm.search(i).status = 'In Route'
                     hm.search(i).start = 'Departed at ' + str(start)
-                    print('Package ID: ' + str(hm.search(i).ID))
-                    print('Status of Delivery: ' + str(hm.search(i).status))   
+                    print(hm.search(i).__str__())  
                 else:
                     hm.search(i).status = 'Delivered at ' + str(status)
                     hm.search(i).start = 'Departed at ' + str(start)
-                    print('Package ID: ' + str(hm.search(i).ID))
-                    print('Status of Delivery: ' + str(hm.search(i).status))
+                    print(hm.search(i).__str__()) 
                     
 
     except:
