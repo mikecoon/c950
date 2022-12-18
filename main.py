@@ -1,7 +1,3 @@
-'''
-Name: Michael Coon
-ID: 010791917
-'''
 from load_trucks import *
 from options import *
 
